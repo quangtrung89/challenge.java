@@ -28,4 +28,4 @@ public static boolean unmarshalJSON(Object object, JSONObject json)
 
 ### Step 4 - Check in and commit Your solution onto github
 
-### Step 3 - Mail link to Your repository to recruiter
+### Step 5 - Mail link to Your repository to recruiter
