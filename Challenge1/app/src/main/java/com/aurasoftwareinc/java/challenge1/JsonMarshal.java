@@ -11,10 +11,17 @@ public class JsonMarshal
     {
         JSONObject json = new JSONObject();
 
+        try
+        {
+            json.put("test", "dummy");
+        }
+        catch (Exception ignore)
+        {
+        }
+
         return json;
     }
 
-    @Nullable
     public static boolean unmarshalJSON(Object object, JSONObject json)
     {
         return true;

@@ -46,5 +46,4 @@ public class ObjectTypes implements JsonMarshalInterface
     {
         return JsonMarshal.unmarshalJSON(this, json);
     }
-
 }

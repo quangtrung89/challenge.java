@@ -3,12 +3,15 @@ package com.aurasoftwareinc.java.challenge1;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
 import android.widget.Scroller;
 import android.widget.TextView;
+
+import org.json.JSONObject;
 
 public class MainActivity extends Activity
 {
@@ -22,13 +25,14 @@ public class MainActivity extends Activity
         super.onCreate(savedInstanceState);
 
         createLayout();
+
+        setTitle("Put Your Name Here...");
     }
 
     private void createLayout()
     {
         FrameLayout topFrame = new FrameLayout(this);
         topFrame.setLayoutParams(new FrameLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
-        topFrame.setBackgroundColor(0x88880000);
 
         setContentView(topFrame);
 
@@ -40,7 +44,7 @@ public class MainActivity extends Activity
 
         ScrollView scroll1 = new ScrollView(this);
         scroll1.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, 0.5f));
-        scroll1.setBackgroundColor(0x88008800);
+        scroll1.setBackgroundColor(0xffccffcc);
 
         contentFrame.addView(scroll1);
 
@@ -51,7 +55,7 @@ public class MainActivity extends Activity
 
         ScrollView scroll2 = new ScrollView(this);
         scroll2.setLayoutParams(new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT, 0.5f));
-        scroll2.setBackgroundColor(0x88000088);
+        scroll2.setBackgroundColor(0xffccccff);
 
         contentFrame.addView(scroll2);
 
@@ -69,11 +73,43 @@ public class MainActivity extends Activity
 
         contentFrame.addView(buttonFrame);
 
-        TextView startButton = new TextView(this);
-        startButton.setText("Start");
-        startButton.setTextSize(36f);
-        startButton.setBackgroundColor(0xffffffff);
-        startButton.setPadding(20, 20, 20, 20);
-        buttonFrame.addView(startButton);
+        TextView testButton = new TextView(this);
+        testButton.setText("Test It");
+        testButton.setTextSize(36f);
+        testButton.setBackgroundColor(0xffffffff);
+        testButton.setPadding(20, 20, 20, 20);
+
+        testButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                testIt();
+            }
+        });
+
+        buttonFrame.addView(testButton);
+    }
+
+    private void testIt()
+    {
+        try
+        {
+            SubclassTypes subclassTypes1 = new SubclassTypes();
+            subclassTypes1.populateTestData();
+
+            JSONObject marshal1 = subclassTypes1.marshalJSON();
+            text1.setText(marshal1.toString(2));
+
+            SubclassTypes subclassTypes2 = new SubclassTypes();
+            subclassTypes2.unmarshalJSON(marshal1);
+
+            JSONObject marshal2 = subclassTypes2.marshalJSON();
+            text2.setText(marshal2.toString(2));
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
     }
 }
