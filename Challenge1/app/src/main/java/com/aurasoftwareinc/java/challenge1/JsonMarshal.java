@@ -9,7 +9,7 @@ public class JsonMarshal
         //
         // Todo: replace contents of this method with Your code.
         //
-        
+
         JSONObject json = new JSONObject();
 
         try
