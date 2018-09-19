@@ -72,8 +72,10 @@ public class MainActivity extends Activity
 
         contentFrame.addView(buttonFrame);
 
+        String text = "Test It";
+
         TextView testButton = new TextView(this);
-        testButton.setText("Test It");
+        testButton.setText(text);
         testButton.setTextSize(36f);
         testButton.setBackgroundColor(0xffffffff);
         testButton.setPadding(20, 20, 20, 20);
@@ -94,17 +96,39 @@ public class MainActivity extends Activity
     {
         try
         {
+            //
+            // Create instance and populate with test values.
+            //
+
             SubclassTypes subclassTypes1 = new SubclassTypes();
             subclassTypes1.populateTestData();
+
+            //
+            // Marshal into JSON and display pretty
+            // printed JSON string in text view 1.
+            //
 
             JSONObject marshal1 = subclassTypes1.marshalJSON();
             text1.setText(marshal1.toString(2));
 
+            //
+            // Unmarshal from JSON into empty test class.
+            //
+
             SubclassTypes subclassTypes2 = new SubclassTypes();
             subclassTypes2.unmarshalJSON(marshal1);
 
+            //
+            // Marshal unmarshalled class into JSON and display
+            // pretty printed JSON string in text view 2.
+            //
+
             JSONObject marshal2 = subclassTypes2.marshalJSON();
             text2.setText(marshal2.toString(2));
+
+            //
+            // Both text views should now contain identical content.
+            //
         }
         catch (Exception ex)
         {

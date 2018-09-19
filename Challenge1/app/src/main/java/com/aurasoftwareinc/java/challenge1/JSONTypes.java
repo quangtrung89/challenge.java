@@ -6,7 +6,7 @@ import org.json.JSONObject;
 public class JSONTypes implements JsonMarshalInterface
 {
     public JSONObject jsonObject;
-    public JSONArray jsonArray;
+    private JSONArray jsonArray;
 
     public void populateTestData()
     {
