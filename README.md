@@ -16,7 +16,7 @@ Its purpose is to marshal any Java Class which supports the given interface into
 * Use Android Studio
 * Do not use Eclipse
 
-### Step 2 - Implement two methods in Class JsonMarshal
+### Step 3 - Implement two methods in Class JsonMarshal
 
 public static JSONObject marshalJSON(Object object)
 
