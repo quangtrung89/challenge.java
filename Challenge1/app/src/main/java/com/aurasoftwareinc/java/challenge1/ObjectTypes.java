@@ -24,8 +24,8 @@ public class ObjectTypes implements JsonMarshalInterface
 
     public void populateTestData()
     {
-        objByte = 42;
-        objShort = 4242;
+        objByte = 88;
+        objShort = 8888;
         objInt = 47114711;
         objLong = 12345678901234567L;
         objFloat = 42.5f;
